@@ -20,26 +20,32 @@ class Cube:
     def __getitem__(self, index):
         return self.area[index]
 
-    # def __str__(self):
-    #     result = ""
+    def __str__(self):
+        result = ""
+        for axe in range(self.get_depth()):
+            result += f"Matrix {axe} \n"
+            for row in range(self.get_height()):
+                for col in range(self.get_width()):
+                    result += str(self.area[axe][row][col]) + " "
 
-    #     for row in range(self.get_height()):
-    #         for col in range(self.get_width()):
-    #             result += str(self.data[row][col]) + " "
+                result += "\n"
+            result += "\n"
 
-    #         result += "\n)"
-
-    #     return str(result)
+        return str(result)
 
     def __random_fill__(self):
         import random
 
-        for row in range(self.get_height()):
-            for col in range(self.get_width()):
-                self.data[row][col] = random.randint(1,10)
+        for axe in range(self.get_depth()):
+            for row in range(self.get_height()):
+                for col in range(self.get_width()):
+                    self.area[axe][row][col] = random.randint(1,100)
 
     if __name__ == '__main__':
+
         from cube import Cube
         cubex = Cube(2, 3, 4)
         print(f"La profundidad es: {cubex.get_depth()} el alto es {cubex.get_height()} y el largo es {cubex.get_width()}")
-        print(cubex)
+        cubex.__random_fill__()
+        print(cubex.__str__())
+        

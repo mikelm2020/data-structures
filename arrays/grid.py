@@ -33,3 +33,9 @@ class Grid:
         for row in range(self.get_height()):
             for col in range(self.get_width()):
                 self.data[row][col] = random.randint(1,10)
+
+    if __name__ == '__main__':
+        from grid import Grid
+        matrix = Grid(4,5)
+        matrix.__random_fill__()
+        print(matrix.__str__())
